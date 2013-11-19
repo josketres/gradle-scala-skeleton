@@ -1,0 +1,19 @@
+apply plugin: 'scala'
+apply plugin: 'eclipse'
+
+repositories{
+    mavenCentral()
+    mavenLocal()
+}
+
+dependencies{
+    compile "org.scala-lang:scala-library:2.10.1"
+	testCompile 'org.scalatest:scalatest_2.10:2.0'
+    testCompile 'junit:junit:4.+'
+}
+
+task run(type: JavaExec, dependsOn: classes) {
+    main = 'Main'
+    classpath sourceSets.main.runtimeClasspath
+    classpath configurations.runtime
+}
